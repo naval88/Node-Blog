@@ -11,4 +11,13 @@ module.exports = function(app) {
 	app.get('/posts', post.listPost);	
 	app.get('/posts/:limitId', post.listPostAsPerPage);
 	app.get('/popular-posts', post.popularPosts);
+
+
+
+
+	// admin route start from here
+	const login = require('../controller/admin/login.controller.js');
+	app.get('/admin', login.showLogin);
+	app.post('/login', login.checkLogin);
+
 }
