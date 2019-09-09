@@ -5,5 +5,10 @@
   "engines": {
     "node": "12.8.1",
     "npm": "6.10.2"
+  },
+  "dependencies": {
+	"express":"*",
+	"body-parser":"*",
+	"bcrypt": "^0.8.5"
   }
 }
