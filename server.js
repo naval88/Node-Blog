@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+app.set('port', (process.env.PORT || 8081));
 var router = express.Router();
 module.exports = router;
 bodyParser = require('body-parser');
@@ -14,7 +15,7 @@ const corsOptions = {
 }
 app.use(cors(corsOptions));
 require('./router/app.router.js')(app);
-var server = app.listen(8081, function () {
+var server = app.listen(app.get('port'), function () {
    var host = server.address().address
    var port = server.address().port
    
