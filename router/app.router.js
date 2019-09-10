@@ -20,4 +20,10 @@ module.exports = function(app) {
 	app.get('/admin', login.showLogin);
 	app.post('/login', login.checkLogin);
 
+	//dashboard route
+	const home = require('../controller/admin/home.controller.js');
+	app.get('/dashboard', home.showHome);
+	app.get('/dashboard/users', home.getUsers);
+
+	
 }

@@ -6,5 +6,5 @@ exports.showLogin = (req,res) => {
 
 exports.checkLogin = (req,res) => {	
 	console.log(req.body);
-	res.end("request end");
+	res.redirect('/dashboard');
 };
