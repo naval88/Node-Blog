@@ -59,12 +59,12 @@ User.updateUserById = function (userId, userData, result) {
 
 User.remvoeUser = function (userId, result) {   
     sql.query("Delete from users where id = ? ",userId ,
-    function(err , result) {              
+    function(err , result_data) {              
         if(err) {
             result(err, null);
         }
         else {
-            result(null, result);
+            result(null, result_data);
         }
     })
 };       

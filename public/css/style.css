@@ -59,6 +59,14 @@ span.psw {
   padding-top: 16px;
 }
 
+.dashboard_login {
+  padding:20px;
+  border:solid 1px #000;
+}
+#formContent {
+  margin:100px 50px;
+}
+
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
   span.psw {

@@ -1,13 +1,14 @@
 var express = require('express');
 var app = express();
 var router = express.Router();
+const session = require('express-session');
 module.exports = router;
 bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // set the view engine to ejs
 app.set('view engine', 'ejs');
-
+app.use(session({secret: 'ssshhhhh'}));
 app.use(express.static('public'));
 app.use('/upload', express.static(__dirname + '/upload'));
 app.use('/public', express.static(__dirname + '/public'));

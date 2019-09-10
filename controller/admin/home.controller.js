@@ -1,7 +1,6 @@
 var User = require('../../models/user.model.js');
 
 exports.showHome = (req,res) => {	
-	console.log(req.body);
 	res.render('admin/home');
 };
 
@@ -15,8 +14,7 @@ exports.getManagers = (req,res) => {
 	});			
 };
 
-exports.saveManager = (req, res) => {
-	console.log("start");
+exports.saveManager = (req, res) => {	
 	var new_user = new User(req.body);	
 	 if(!new_user.email) {
 		res.status(400).send({ error:true, message: 'Please provide name/email' });

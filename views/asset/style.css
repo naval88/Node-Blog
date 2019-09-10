@@ -260,3 +260,7 @@ input[type=text]:placeholder {
 #icon {
   width:60%;
 }
+.dashboard_login {
+  padding:20px;
+  border: 1px solid #000;
+}

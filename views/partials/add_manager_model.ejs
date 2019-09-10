@@ -20,6 +20,7 @@
         </div>
     </div>
 </div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
 function saveManager() {
     $(".email_error").html('');
@@ -33,12 +34,14 @@ function saveManager() {
 
     },
     success: function (response) {         
-        alert(response.type);
         if(response.type == "error") {
             $(".email_error").html(response.message);
         } else {
-            //$("#add_project").hide();   
-            window.location.href = redirect_url;
+            $("#add_project").hide();   
+            swal("Good job!", "Manager added successfully!", "success");   
+            setTimeout(function(){
+                window.location.href = redirect_url;
+            },2000); 
         }
     },
     error   : function ( response )
