@@ -74,32 +74,48 @@
     <script>
     	$( document ).ready(function() {
     		$('#manager_table').DataTable();
-	    	$(".delete_user").click(function(){
+			   		
+    		$(".delete_user").click(function(){
 	    		let user_id = $(this).attr('user_id');
 	    		let redirect_url = '/dashboard/managers';
-				$.ajax({
-					url     : '/users/'+user_id,
-					type    : 'Delete',
-					dataType: 'json',
-					beforeSend: function() {
+					swal({
+					title: "Are you sure?",
+					text: "You will not be able to recover this manager again!",
+					icon: "warning",
+					buttons: [
+					'No, cancel it!',
+					'Yes, I am sure!'
+					],
+					dangerMode: true,
+					}).then(function(isConfirm) {
+					if (isConfirm) {
+						$.ajax({
+						url     : '/users/'+user_id,
+						type    : 'Delete',
+						dataType: 'json',
+						beforeSend: function() {
 
-					},
-					success: function (response) {         
-						if(response.type == "error") {
-						$(".email_error").html(response.message);
-						} else {
-						swal("Good job!", "User deleted successfully!", "success");   
-						setTimeout(function(){
-							window.location.href = redirect_url;
-						},2000); 
+						},
+						success: function (response) {         
+							if(response.type == "error") {
+							$(".email_error").html(response.message);
+							} else {
+							swal("Good job!", "User deleted successfully!", "success");   
+							setTimeout(function(){
+								window.location.href = redirect_url;
+							},2000); 
 
-						}
-					},
-					error   : function ( response )
-					{
-						alert("error");
-					},
-				});
+							}
+						},
+						error   : function ( response )
+						{
+							alert("error");
+						},
+					});
+				} else {
+           				 swal("Cancelled", "Your manager information is safe :)", "error");
+         		 	}
+       			});
 	    	});
     	});
     </script>

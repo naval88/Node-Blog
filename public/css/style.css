@@ -66,6 +66,9 @@ span.psw {
 #formContent {
   margin:100px 50px;
 }
+.table a.a-insides {
+  cursor: pointer!important;
+}
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
