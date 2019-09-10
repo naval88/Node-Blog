@@ -23,7 +23,8 @@ module.exports = function(app) {
 	//dashboard route
 	const home = require('../controller/admin/home.controller.js');
 	app.get('/dashboard', home.showHome);
-	app.get('/dashboard/users', home.getUsers);
+	app.get('/dashboard/managers', home.getManagers);
+	app.post('/dashboard/save-managers', user.createUser);
 
 	
 }

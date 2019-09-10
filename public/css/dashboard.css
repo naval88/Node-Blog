@@ -555,6 +555,9 @@ header {
     line-height:22px;
     transition: 0.1s all;
 }
+.red {
+    color:red;
+}
 .modal-header.login-header {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;

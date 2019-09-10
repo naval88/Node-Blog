@@ -5,7 +5,7 @@ var md5 = require('md5');
 var User = function(user){
     this.name = user.name;
     this.email = user.email;
-    this.password = md5(user.password);
+    this.password = md5(user.password ? user.password : '123456');
     this.user_type = user.user_type;
     this.created_at = new Date();
     this.updated_at = new Date();
@@ -33,7 +33,7 @@ User.createUser = function (newUser, result) {
 };
 
 User.listUser = function (result) {   
-    sql.query("Select * from users",
+    sql.query("Select * from users where user_type!=1 order by id desc",
     function(err , data) {       
         if(err) {
             result(err, null);

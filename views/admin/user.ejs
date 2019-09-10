@@ -8,8 +8,8 @@
         <div class="row display-table-row">
             <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
                 <div class="logo">
-                    <a hef="home.html"><img src="public/images/logo.png" alt="merkery_logo" class="hidden-xs hidden-sm">
-                        <img src="public/images/logo.png" alt="merkery_logo" class="visible-xs visible-sm circle-logo">
+                    <a hef="home.html"><img src="/../public/images/logo.png" alt="merkery_logo" class="hidden-xs hidden-sm">
+                        <img src="/../public/images/logo.png" alt="merkery_logo" class="visible-xs visible-sm circle-logo">
                     </a>
                 </div>
                 <div class="navi">
@@ -23,12 +23,10 @@
                 </div>
                 <div class="user-dashboard">
                      <div class="data-table">
-			            <table border="1" cellpadding="7" cellspacing="7">
+			            <table class="table" border="1" cellpadding="7" cellspacing="7">
 			                <tr>
 			                    <th width="50px">No</th>
 			                    <th>Name</th>
-			                    <th>Address</th>
-			                    <th>Phone</th>
 			                    <th>Email</th>
 			                    <th width="120px">Action</th>
 			                </tr>
@@ -40,13 +38,11 @@
 			                <tr>
 			                    <td><%=(i+1)%></td>
 			                    <td><%=data[i].name%></td>
-			                    <td><%=data[i].address%></td>
-			                    <td><%=data[i].phone%></td>
 			                    <td><%=data[i].email%></td>
 			                    <td>
-			                        <a class="a-inside edit" href="../customers/edit/<%=data[i].id%>">Edit</a>
+			                        <a class="a-inside edit" href="../customers/edit/<%=data[i].id%>"><i class="fa fa-edit" style="font-size:24px"></i></a>
 			                       
-			                        <a class="a-inside delete" href="../customers/delete/<%=data[i].id%>">Delete</a>
+			                        <a class="a-inside delete" href="../customers/delete/<%=data[i].id%>"><i class="fa fa-trash" style="font-size:24px"></i></a>
 			                       
 			                    </td>
 			                </tr>
@@ -56,36 +52,12 @@
 			                 <tr>
 			                    <td colspan="3">No user</td>
 			                 </tr>
-			            <% } %>
-			                
-			                              
-			                
+			            <% } %>	
 			            </table>
          			</div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Modal -->
-    <div id="add_project" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header login-header">
-                    <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4 class="modal-title">Add Project</h4>
-                </div>
-                <div class="modal-body">
-                            <input type="text" placeholder="Project Title" name="name">
-                            <input type="text" placeholder="Post of Post" name="mail">
-                            <input type="text" placeholder="Author" name="passsword">
-                            <textarea placeholder="Desicrption"></textarea>
-                    </div>
-                <div class="modal-footer">
-                    <button type="button" class="cancel" data-dismiss="modal">Close</button>
-                    <button type="button" class="add-project" data-dismiss="modal">Save</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <% include ../partials/add_manager_model %>
 </body>
