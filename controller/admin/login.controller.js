@@ -31,8 +31,15 @@ exports.checkLogin = (req,res) => {
 			res.send(err);
 		}
 		if(user.length > 0) {
-			req.session.user  = user;				
-			res.redirect('/dashboard');
+			req.session.userid  = user[0].id;		
+			req.session.username  = user[0].name;
+			if(user[0].type == 1) {
+				res.redirect('/dashboard');
+				res.end("redirected to dashboard");
+			}
+			res.redirect('/dashboard/chat');
+			res.end("redirected to chat");		
+			
 		} else {
 			res.redirect('/admin?x=1');
 		}		

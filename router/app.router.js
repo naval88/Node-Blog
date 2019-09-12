@@ -1,6 +1,7 @@
 // middleware function to check for logged-in users
 var sessionChecker = (req, res, next) => {
-    if (req.session.user) {
+	console.log("in session checker"+req.session.userid);
+    if (req.session.userid) {
         next();
     } else {
         res.redirect('/admin');
@@ -32,5 +33,8 @@ module.exports = function(app) {
 	app.get('/dashboard', sessionChecker , home.showHome);
 	app.get('/dashboard/managers', sessionChecker, home.getManagers);
 	app.post('/dashboard/save-managers', user.createUser);
-
+	// chat route
+	const chat = require('../controller/admin/chat.controller.js');
+	app.get('/dashboard/chat', sessionChecker, chat.showChatBox);
+	app.get('/dashboard/user/message/:userId', sessionChecker, chat.getMessages);
 }

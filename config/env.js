@@ -5,7 +5,7 @@ const env = {
 	'db_host' : 'localhost',
 	'db_name':'node_angular_basic',
 	'db_user_name': 'root',
-	'db_password': '123456'
+	'db_password': '123456',
 };
 
 module.exports = env;
