@@ -9,8 +9,6 @@ var Friend = function(friend){
     this.updated_at = new Date();
 };
 
-
-
 Friend.getFriends =  function (user_id, result) {   
 	$query = "select id, name, email from users as u join"
 			+" (select friend_id from friends where user_id = ?"
@@ -24,6 +22,19 @@ Friend.getFriends =  function (user_id, result) {
             result(null, data);
         }
     });
+};
+
+Friend.addMessage = function (data, result) {
+    $query = "INSERT INTO messages set ?";
+    sql.query($query,[user_id, user_id], function(err , data) {              
+        if(err) {
+            result(err, null);
+        }
+        else {
+            result(null, data);
+        }
+    });
+
 };
 
 

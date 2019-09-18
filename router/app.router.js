@@ -22,6 +22,7 @@ module.exports = function(app) {
 	app.get('/posts', post.listPost);	
 	app.get('/posts/:limitId', post.listPostAsPerPage);
 	app.get('/popular-posts', post.popularPosts);
+	app.get('/dashboard/two-table', post.getTwoTableData)
 
 	// admin route start from here
 	const login = require('../controller/admin/login.controller.js');
@@ -37,4 +38,6 @@ module.exports = function(app) {
 	const chat = require('../controller/admin/chat.controller.js');
 	app.get('/dashboard/chat', sessionChecker, chat.showChatBox);
 	app.get('/dashboard/user/message/:userId', sessionChecker, chat.getMessages);
+	app.get('/test-data', post.showData);	
+	app.get('/save-message', chat.saveMessage);	
 }

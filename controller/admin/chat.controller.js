@@ -9,7 +9,9 @@ exports.showChatBox = (req,res) => {
 		}
 		console.log(data);
 		if(data.length > 0){  			
-			res.render("admin/chat_custom", {data:data,username:req.session.username});			
+			res.render("admin/chat", {data:data,
+										username:req.session.username,
+										user_id:user_id});			
 		} else {	
 			res.render("admin/chat",{data:data});	
 		}
@@ -17,7 +19,6 @@ exports.showChatBox = (req,res) => {
 };
 
 //getMessages as per user id
-
 exports.getMessages = (req, res) => {	
 	let user_id = req.session.userid;
 	let friend_id = req.params.userId ?  req.params.userId : 18;
@@ -32,6 +33,13 @@ exports.getMessages = (req, res) => {
 	});
 };
 
+exports.saveMessage = (req, res) => {
+	let sender_id = req
+	let reciever_id = 
+	Messages.addMessage(req.body, function (err, data){
+
+	});
+};
 
 //select * from messages where ((sender_id = 10 &&  reciever_id = 18) || (sender_id = 18 &&  reciever_id = 10)) order by id desc
 

@@ -83,6 +83,7 @@ User.checkLogin = function (userData, result)
         }
     });
 };
+
 module.exports = User;
 
 

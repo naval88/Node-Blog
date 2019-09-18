@@ -9,11 +9,6 @@ module.exports = axios;
 bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-
-
-
-
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 app.use(session({secret: 'ssshhhhh'}));
@@ -33,7 +28,7 @@ var server = app.listen(process.env.PORT || 8081, function () {
   
    console.log("Example app listening at http://%s:%s", host, port)
 })
- const io = require('socket.io').listen(server);   
+const io = require('socket.io').listen(server);   
 
 io.sockets.on('connection', function(socket) {
     socket.on('username', function(username) {

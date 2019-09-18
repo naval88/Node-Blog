@@ -5,20 +5,39 @@ window.addEventListener('load',function(){
 		let active_user_img = $('.contacts .active .user_img').attr('src');
 		$('.card-header .user_img').attr('src', active_user_img);
 		$('.card-header .user_info .user_header_name').html($('.contacts .active .user_info span').text());
+		$(".user_reciever_id").text(active_id);
 		getMessageBoxData(active_id);	
 	});
 });
 
-$('.contacts li').click( function(){
-	$('.card-header .user_info .user_header_name').html($('.contacts .active .user_info span').text());
+$('.contacts li').click(function() {	
 	$('.contacts li').removeClass('active');
 	$(this).addClass('active');
+	$('.card-header .user_info .user_header_name').html($('.contacts .active .user_info span').text());
 	//let active_user_img = $(this+' .user_img').attr('src');
 	//alert(active_user_img);
 	//$('.card-header .user_img').attr('src', active_user_img);
 	let active_id = $(this).attr('user_id');
+	$(".user_reciever_id").text(active_id);
 	getMessageBoxData(active_id);
 });
+
+$('form').submit(function(e){
+	e.preventDefault(); // prevents page reloading
+	let sender_id = $(".user_sender_id").text();	
+	let reciever_id =  $(".user_reciever_id").text();
+	//console.log(sender_id);
+	//console.log(reciever_id);
+	//alert($('#txt').val());
+	socket.emit('chat_message', $('#txt').val());
+	$('#txt').val('');
+	return false;
+});
+
+
+function saveMessge(sender_id, reciever_id) {
+	
+}
 
 function getMessageBoxData(active_id) {
 	$.ajax({

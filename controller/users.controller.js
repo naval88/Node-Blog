@@ -23,7 +23,11 @@ exports.createUser = (req, res) => {
 			res.send(err);
 		}
 		if(user.length > 0){  			
-			res.json({ type: 'error', 'status': 200, message: 'email already exsist' });	
+			res.json({
+						type: 'error', 
+						'status': 200, 
+						message: 'email already exsist' 
+					});	
 		} else {	
 			res.json({ type: 'success', 'status': 201, message: 'user created successfully' });
 		}

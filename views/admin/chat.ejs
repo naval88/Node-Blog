@@ -73,6 +73,11 @@
 									<span>Chat with 
 										<span class='user_header_name'>	
 										</span>
+										<span class='user_reciever_id'>	
+										</span>
+										<span class='user_sender_id'>	
+											<%=user_id%>
+										</span>
 									</span>
 									<p>1767 Messages</p>
 								</div>
@@ -129,25 +134,25 @@
 				</div>
 			</div>
 		</div>
-<script src="/../public/js/chat.js"></script>
 <script>
 	var user_name = "<%= username %>";
 	var socket = io.connect('http://127.0.0.1:8081');
-	// submit text message without reload/refresh the page
-	$('form').submit(function(e){
-	e.preventDefault(); // prevents page reloading
-	alert($('#txt').val());
-	socket.emit('chat_message', $('#txt').val());
-	$('#txt').val('');
-	return false;
-	});
-
 	// append the chat text message
 	socket.on('chat_message', function(msg){
-	$('#msg_card_body').append($('<li>').html(msg));
+		let msg_html = '<div class="d-flex justify-content-end mb-4">'+
+		'<div class="msg_cotainer_send">'+msg+		
+		'<span class="msg_time_send">8:55 AM, Today</span>'+
+		'</div>'+
+		'<div class="img_cont_msg">'+
+		'<img src="https://2.bp.blogspot.com/-8ytYF7cfPkQ/WkPe1-rtrcI/AAAAAAAAGqU/FGfTDVgkcIwmOTtjLka51vineFBExJuSACLcBGAs/s320/31.jpg" class="rounded-circle user_img_msg">'+
+		'</div>'+
+		'</div>';		
+		$('.msg_card_body').append(msg_html);
 	});
-
 	socket.emit('username', user_name);
+	socket.emit('user_id', user_id);
+	socket.emit('reviever_id', reviever_id);
 </script>
+<script src="/../public/js/chat.js"></script>
 </body>
 </html>
